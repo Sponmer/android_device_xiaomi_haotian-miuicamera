@@ -1,5 +1,9 @@
 binder_use(platform_app)
 binder_call(platform_app, hal_camera_default)
+binder_call(platform_app, hal_misys_vendor)
+binder_call(hal_misys_vendor, platform_app)
+binder_call(platform_app_36, hal_misys_vendor)
+binder_call(hal_misys_vendor, platform_app_36)
 
 allow platform_app hal_aidlbgservice_service:service_manager find;
 
@@ -9,6 +13,9 @@ allow platform_app vendor_camera_data_file:dir { append map r_dir_perms write };
 allow platform_app vendor_camera_data_file:file { getattr open read };
 
 allow platform_app app_data_file:file execute;
+
+allow platform_app vendor_miev_device:chr_file write;
+allow platform_app hal_misys_vendor_service:service_manager find;
 
 # Properties
 get_prop(platform_app, vendor_audio_prop)
