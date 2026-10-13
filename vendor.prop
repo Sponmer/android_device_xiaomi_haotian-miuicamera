@@ -1,2 +1,6 @@
 # Camera
 ro.hardware.camera=xiaomi
+persist.sys.miui.camera.version=3.0
+persist.sys.miui.camera.quickcamera.supported=true
+persist.sys.miui.cameraopt.debug=true
+persist.sys.miui.camera.cameramind.supported=true
