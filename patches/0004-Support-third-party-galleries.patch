@@ -1,0 +1,70 @@
+From ba797df30620482d791f1300c4c23103ab266bbe Mon Sep 17 00:00:00 2001
+From: Arian <arian.kulmer@web.de>
+Date: Sat, 29 Aug 2026 11:47:03 +0700
+Subject: [PATCH 4/7] Support third party galleries
+
+Change-Id: I4d2c54299f009d13be70b3dddeca6ff5e2767026
+---
+ smali/F1/d3.smali                     | 4 ----
+ smali/com/android/camera/Camera.smali | 6 +++---
+ smali_classes4/bh/e.smali             | 2 +-
+ 3 files changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/smali/F1/d3.smali b/smali/F1/d3.smali
+index 0b0c77c03..008445dfc 100644
+--- a/smali/F1/d3.smali
++++ b/smali/F1/d3.smali
+@@ -138,10 +138,6 @@
+     invoke-direct {v1, v5, p2}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
+ 
+     :goto_0
+-    const-string p2, "com.miui.gallery"
+-
+-    invoke-virtual {v1, p2}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+-
+     const-string p2, "from_MiuiCamera"
+ 
+     invoke-virtual {v1, p2, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+diff --git a/smali/com/android/camera/Camera.smali b/smali/com/android/camera/Camera.smali
+index 071fd61d1..e9c762d86 100644
+--- a/smali/com/android/camera/Camera.smali
++++ b/smali/com/android/camera/Camera.smali
+@@ -23732,7 +23732,7 @@
+ 
+     const-string v1, "gotoGallery: no gallery"
+ 
+-    const-string v2, "com.miui.gallery"
++    const-string v2, "android.intent.category.APP_GALLERY"
+ 
+     if-eqz v0, :cond_15
+ 
+@@ -23759,11 +23759,11 @@
+ 
+     new-instance v0, Landroid/content/Intent;
+ 
+-    const-string v3, "com.miui.gallery.action.VIEW_EMPTY_PHOTO"
++    const-string v3, "android.intent.action.VIEW"
+ 
+     invoke-direct {v0, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+ 
+-    invoke-virtual {v0, v2}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
++    invoke-virtual {v0, v2}, Landroid/content/Intent;->addCategory(Ljava/lang/String;)Landroid/content/Intent;
+ 
+     const-string v2, "from_MiuiCamera"
+ 
+diff --git a/smali_classes4/bh/e.smali b/smali_classes4/bh/e.smali
+index 73e281553..16dc11ee1 100644
+--- a/smali_classes4/bh/e.smali
++++ b/smali_classes4/bh/e.smali
+@@ -363,7 +363,7 @@
+ 
+     if-nez v3, :cond_2
+ 
+-    const/4 v5, 0x4
++    const/4 v5, 0x2
+ 
+     goto :goto_0
+ 
+-- 
+2.56.0
+

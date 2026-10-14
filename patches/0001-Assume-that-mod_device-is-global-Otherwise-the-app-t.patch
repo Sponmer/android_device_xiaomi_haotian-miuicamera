@@ -1,6 +1,6 @@
-From 0d666eb2aeae2da963f7bda4cf218f51aea71871 Mon Sep 17 00:00:00 2001
-From: AdarshGrewal <adarshgrewal@gmail.com>
-Date: Wed, 3 Jun 2026 13:44:28 +0530
+From e39604fa0ddd4a651660c9998a5cb7d8f62ee791 Mon Sep 17 00:00:00 2001
+From: danielml <daniel@danielml.dev>
+Date: Tue, 13 Oct 2026 03:22:05 -1100
 Subject: [PATCH 1/7] Assume that mod_device is global Otherwise, the app tries
  to start a custom permissions dialog which has dependencies on HyperOS
  Security Center app
@@ -8,13 +8,13 @@ Subject: [PATCH 1/7] Assume that mod_device is global Otherwise, the app tries
 Change-Id: I8962a6e409f5aa30f84fccd482fefe78767069c2
 Signed-off-by: danielml <daniel@danielml.dev>
 ---
- smali_classes4/G7/c.smali | 2 +-
+ smali_classes3/Te/d.smali | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/smali_classes4/G7/c.smali b/smali_classes4/G7/c.smali
-index cc09a4e1..f4b9f4b1 100644
---- a/smali_classes4/G7/c.smali
-+++ b/smali_classes4/G7/c.smali
+diff --git a/smali_classes3/Te/d.smali b/smali_classes3/Te/d.smali
+index 08cad81d3..fe4d32546 100644
+--- a/smali_classes3/Te/d.smali
++++ b/smali_classes3/Te/d.smali
 @@ -233,7 +233,7 @@
  
      invoke-virtual {v0, v3}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
@@ -22,8 +22,8 @@ index cc09a4e1..f4b9f4b1 100644
 -    move-result v0
 +    const/4 v0, 0x1
  
-     sput-boolean v0, LG7/c;->m:Z
+     sput-boolean v0, LTe/d;->m:Z
  
 -- 
-2.54.0
+2.56.0
 
