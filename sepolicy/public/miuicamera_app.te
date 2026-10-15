@@ -1,0 +1,2 @@
+# Export the camera domain so vendor policy can reference it.
+type miuicamera_app, domain;

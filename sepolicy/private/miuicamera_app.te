@@ -1,0 +1,11 @@
+typeattribute miuicamera_app coredomain;
+
+app_domain(miuicamera_app)
+net_domain(miuicamera_app)
+bluetooth_domain(miuicamera_app)
+platform_app_domain(miuicamera_app)
+
+# Keep the legacy ashmem access provided to target-SDK-36 platform apps.
+allow miuicamera_app domain:memfd_file ioctl;
+allowxperm miuicamera_app domain:memfd_file ioctl ashmem_ioctls;
+allow miuicamera_app ashmem_libcutils_device:chr_file open;

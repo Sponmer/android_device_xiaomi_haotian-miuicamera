@@ -1,0 +1,29 @@
+binder_use(miuicamera_app)
+binder_call(miuicamera_app, hal_camera_default)
+binder_call(miuicamera_app, hal_misys_vendor)
+binder_call(hal_misys_vendor, miuicamera_app)
+
+hal_client_domain(miuicamera_app, hal_aidlbgservice)
+hal_client_domain(miuicamera_app, vendor_hal_perf)
+hal_client_domain(miuicamera_app, vendor_hal_dspmanager)
+hal_client_domain(miuicamera_app, vendor_hal_unsignedhexlp)
+hal_client_domain(miuicamera_app, vendor_hal_qspmhal)
+
+allow miuicamera_app hal_aidlbgservice_service:service_manager find;
+
+allow miuicamera_app adsprpcd_file:dir { getattr open read search };
+
+allow miuicamera_app vendor_camera_data_file:dir { append map r_dir_perms write };
+allow miuicamera_app vendor_camera_data_file:file { getattr open read };
+allow miuicamera_app app_data_file:file execute;
+
+# Properties
+get_prop(miuicamera_app, vendor_audio_prop)
+get_prop(miuicamera_app, vendor_camera_p3enable_prop)
+get_prop(miuicamera_app, vendor_camera_sensor_prop)
+get_prop(miuicamera_app, vendor_display_prop)
+get_prop(miuicamera_app, vendor_displayfeature_prop)
+get_prop(miuicamera_app, vendor_panel_info_prop)
+
+allow miuicamera_app hal_misys_vendor_service:service_manager find;
+allow miuicamera_app miev_device:chr_file { write open };

@@ -1,0 +1,3 @@
+# Preserve the platform app data type and MLS level while isolating camera permissions.
+user=_app seinfo=platform isPrivApp=true name=com.android.camera domain=miuicamera_app type=app_data_file levelFrom=user
+user=_app seinfo=platform isPrivApp=true name=com.android.camera:pushservice domain=miuicamera_app type=app_data_file levelFrom=user
